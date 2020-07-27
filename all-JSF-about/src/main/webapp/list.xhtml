@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="/template.xhtml">
+	 
+	  <ui:define name="pageTitle"> #{msg['list.pTitle']}</ui:define>
+	   <ui:define name="pageHeader">
+	   			<h:link value="#{msg['form.pHeader']}" outcome="form"/> |
+	   			<h:link value="#{msg['list.pHeader']}" outcome="list"/>
+	    </ui:define>
+	   
+	    <ui:define name="body">
+	      
+	        <h:dataTable value="#{catalogItemFormBean.items}" var="item">
+	           <h:column>
+	              <f:facet name="header"> 	Name	</f:facet>
+	              <h:outputText value="#{item.name}"> </h:outputText>
+	           </h:column>
+	          
+	           <h:column>
+	               <f:facet name="header"> Manufacturer	</f:facet>
+	               <h:outputText value="#{item.manufacturer}"> </h:outputText>
+	           </h:column>
+	        
+	            <h:column>
+	                <f:facet name="header"> Available Date 	</f:facet>
+	                <h:outputText value="#{item.availableDate}"></h:outputText>
+	            </h:column>
+	            
+	            <h:column>
+	                 <f:facet name="header"> 	Description	    </f:facet>
+	                 <h:outputText value="#{item.description}"> </h:outputText>
+	               </h:column>
+	                  
+	             <h:column>    <h:link value="Remove" outcome="confirm">
+	                    <f:param name="itemId" value="#{item.itemId}"/>
+	                 </h:link>	                 
+	            </h:column>
+	         </h:dataTable>
+	         
+	        
+	         <br></br>
+	         Your personal information are being saved in the consol >
+	      
+	   </ui:define>
+	</ui:composition>
+</html>
